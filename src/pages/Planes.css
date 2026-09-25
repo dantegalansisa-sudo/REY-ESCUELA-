@@ -1,0 +1,321 @@
+.phero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: calc(var(--nav-h) + 72px) 0 180px;
+}
+.phero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.phero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+.phero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(250, 250, 247, 0.95) 0%, rgba(250, 250, 247, 0.82) 40%, rgba(250, 250, 247, 0.2) 75%),
+    linear-gradient(0deg, var(--bg) 0%, rgba(250, 250, 247, 0) 40%);
+}
+.phero__crumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 26px;
+}
+.phero__crumbs a:hover {
+  color: var(--blue);
+}
+.phero__crumbs span {
+  color: var(--navy);
+}
+.phero__eyebrow {
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+.phero__title {
+  font-size: clamp(2.6rem, 5.6vw, 5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: var(--navy);
+}
+.phero__accent {
+  color: var(--blue);
+}
+.phero__lead {
+  margin-top: 22px;
+  max-width: 540px;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--navy-80);
+}
+
+/* ---------- pricing cards ---------- */
+.pricing {
+  margin-top: -120px;
+  position: relative;
+  z-index: 1;
+}
+.pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+.pcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 36px 32px 32px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow), 0 0 0 1px rgba(15, 27, 45, 0.05);
+  transition: translate 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s;
+}
+.pcard:hover {
+  translate: 0 -6px;
+  box-shadow: var(--shadow-lg);
+}
+.pcard--featured {
+  box-shadow: var(--shadow-lg), 0 0 0 2px var(--blue);
+}
+.pcard__ribbon {
+  position: absolute;
+  top: -15px;
+  left: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 800;
+  background: var(--gold);
+  color: var(--navy);
+  box-shadow: 0 8px 18px -8px rgba(232, 169, 28, 0.9);
+}
+.pcard__head {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.pcard__head h2 {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--blue);
+}
+.pcard__head p {
+  margin-top: 8px;
+  font-size: 14.5px;
+  color: var(--muted);
+  min-height: 2.9em;
+}
+.pcard__price {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 18px;
+  color: var(--navy);
+}
+.pcard__cur {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  margin-top: 8px;
+}
+.pcard__price strong {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.pcard__list {
+  list-style: none;
+  margin: 24px 0 30px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.pcard__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--navy);
+}
+.pcard__list li.is-off {
+  color: #a3a8b1;
+}
+.pcard__mark {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+.pcard--featured .pcard__mark {
+  background: var(--blue);
+  color: var(--surface);
+}
+.pcard__list li.is-off .pcard__mark {
+  background: #f0f0eb;
+  color: #b4b8bf;
+}
+.pcard__cta {
+  width: 100%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- info strip ---------- */
+.pinfo {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.pinfo__item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 0 0 1px var(--line);
+}
+.pinfo__icon {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--gold-soft);
+  color: var(--navy);
+}
+.pinfo__item strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--navy);
+}
+.pinfo__item small {
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.pinfo__item a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* ---------- mini faq ---------- */
+.pfaq__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  gap: 64px;
+  align-items: start;
+}
+
+/* ---------- cta ---------- */
+.pcta {
+  padding-bottom: 120px;
+}
+.pcta__box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 48px 56px;
+  border-radius: 28px;
+  background: linear-gradient(120deg, var(--gold-soft) 0%, #fef9ec 60%, var(--blue-soft) 100%);
+  box-shadow: 0 0 0 1px rgba(232, 169, 28, 0.25);
+}
+.pcta__box h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--navy);
+}
+.pcta__box p {
+  margin-top: 8px;
+  color: var(--navy-80);
+}
+
+@media (max-width: 1100px) {
+  .pricing__grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin: 0 auto;
+    gap: 36px;
+  }
+  .pinfo {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .pfaq__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .pcta__box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .phero {
+    padding: calc(var(--nav-h) + 40px) 0 150px;
+  }
+  .phero__veil {
+    background:
+      linear-gradient(180deg, rgba(250, 250, 247, 0.94) 0%, rgba(250, 250, 247, 0.75) 60%, rgba(250, 250, 247, 0.6) 80%),
+      linear-gradient(0deg, var(--bg) 0%, rgba(250, 250, 247, 0) 30%);
+  }
+  .phero__lead {
+    font-size: 16.5px;
+  }
+  .pcard {
+    padding: 32px 22px 24px;
+  }
+  .pcard__head p {
+    min-height: 0;
+  }
+  .pcta {
+    padding-bottom: 72px;
+  }
+  .pcta__box {
+    padding: 32px 22px;
+  }
+  .pcta__box .btn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+}

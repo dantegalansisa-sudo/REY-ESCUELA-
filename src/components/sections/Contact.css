@@ -1,0 +1,222 @@
+.contact {
+  padding-top: 40px;
+}
+.contact__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 32px;
+  align-items: stretch;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.contact__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.citem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+a.citem:hover strong {
+  color: var(--blue);
+}
+.citem strong {
+  display: block;
+  font-size: 15px;
+  color: var(--navy);
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+.citem small {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.citem__icon {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--blue);
+  color: var(--surface);
+}
+.citem__icon--wa {
+  background: #25d366;
+}
+.citem__icon--gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.contact__social {
+  display: flex;
+  gap: 12px;
+}
+.social {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--surface);
+  transition: transform 0.25s;
+}
+.social:hover {
+  transform: translateY(-3px);
+}
+.social--ig {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+.social--tt {
+  background: var(--navy);
+}
+
+.cform {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm), 0 0 0 1px rgba(15, 27, 45, 0.04);
+}
+.cform h3 {
+  font-size: 21px;
+  font-weight: 800;
+}
+.cform__hint {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: -8px;
+}
+.cform__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.cform label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cform label span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.cform input,
+.cform textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 15px;
+  color: var(--navy);
+  padding: 13px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+.cform input:focus,
+.cform textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  background: var(--surface);
+  box-shadow: 0 0 0 4px var(--blue-soft);
+}
+.cform textarea {
+  flex: 1;
+  min-height: 110px;
+}
+.cform__submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.contact__map {
+  position: relative;
+  min-height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm), 0 0 0 1px rgba(15, 27, 45, 0.06);
+  background: var(--blue-soft);
+}
+.contact__map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.contact__map-card {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.contact__map-card strong {
+  display: block;
+  font-size: 15px;
+  color: var(--navy);
+}
+.contact__map-card small {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+.contact__map-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+@media (max-width: 1100px) {
+  .contact__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact__map {
+    grid-column: 1 / -1;
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 720px) {
+  .contact__inner {
+    grid-template-columns: 1fr;
+  }
+  .cform {
+    padding: 24px 20px;
+  }
+  .cform__row {
+    grid-template-columns: 1fr;
+  }
+  .cform__submit {
+    align-self: stretch;
+  }
+  .contact__map {
+    min-height: 340px;
+  }
+}

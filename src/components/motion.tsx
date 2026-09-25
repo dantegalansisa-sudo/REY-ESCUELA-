@@ -51,7 +51,7 @@ type RevealProps = {
   delay?: number
   stagger?: number
   onMount?: boolean
-  as?: 'div' | 'ul' | 'section' | 'article'
+  as?: 'div' | 'ul' | 'ol' | 'section' | 'article'
 }
 
 export function Reveal({ children, className, delay = 0, stagger, onMount = false, as = 'div' }: RevealProps) {

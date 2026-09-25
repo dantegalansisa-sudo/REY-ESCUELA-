@@ -124,6 +124,34 @@ p {
   will-change: transform;
 }
 
+/* shared section head */
+.shead .eyebrow {
+  margin-bottom: 14px;
+}
+.shead__title-wrap {
+  position: relative;
+  display: inline-block;
+}
+.shead__title {
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 800;
+  color: var(--navy);
+}
+.shead__swoosh {
+  position: absolute;
+  right: -40px;
+  bottom: -14px;
+  width: 90px;
+  color: var(--gold);
+}
+
+@media (max-width: 720px) {
+  .shead__swoosh {
+    right: -12px;
+    width: 70px;
+  }
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;

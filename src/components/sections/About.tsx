@@ -117,7 +117,7 @@ export default function About() {
 
         <Reveal delay={0.1} className="about__ceo">
           <div className="about__ceo-photo">
-            <img src={CEO.photo} alt={`${CEO.name}, director de REY Escuela de Chofer`} loading="lazy" width={500} height={657} />
+            <img src={CEO.photo} alt={`${CEO.name}, director de REY Escuela de Chofer`} loading="lazy" width={800} height={1000} />
           </div>
           <p className="about__ceo-script script" aria-hidden="true">
             Tu licencia,

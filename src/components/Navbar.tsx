@@ -10,6 +10,7 @@ const LINKS = [
   { label: 'Inicio', to: '/', match: (p: string, h: string) => p === '/' && (h === '' || h === '#inicio') },
   { label: 'Servicios', to: '/#servicios', match: (_p: string, h: string) => h === '#servicios' },
   { label: 'Planes', to: '/planes', match: (p: string) => p === '/planes' },
+  { label: 'Videos', to: '/#videos', match: (_p: string, h: string) => h === '#videos' },
   { label: 'Nosotros', to: '/#nosotros', match: (_p: string, h: string) => h === '#nosotros' },
   { label: 'Contacto', to: '/#contacto', match: (_p: string, h: string) => h === '#contacto' },
 ]

@@ -7,6 +7,7 @@ const LINKS = [
   { label: 'Inicio', to: '/' },
   { label: 'Servicios', to: '/#servicios' },
   { label: 'Planes', to: '/planes' },
+  { label: 'Videos', to: '/#videos' },
   { label: 'Nosotros', to: '/#nosotros' },
   { label: 'Contacto', to: '/#contacto' },
 ]

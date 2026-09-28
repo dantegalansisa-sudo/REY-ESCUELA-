@@ -1,0 +1,280 @@
+.about {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.about__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.95fr) minmax(0, 0.62fr);
+  gap: 44px;
+  align-items: start;
+}
+
+/* ---------- copy ---------- */
+.about__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+}
+.about__accent {
+  color: var(--blue);
+}
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: var(--muted);
+}
+.about__text strong {
+  color: var(--navy);
+}
+.about__values {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+}
+.about__values li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--navy);
+}
+.about__vicon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+  background: var(--gold-soft);
+  box-shadow: inset 0 0 0 1.5px var(--gold);
+}
+
+.about__quote {
+  position: relative;
+  width: 100%;
+  margin-top: 6px;
+  padding: 26px 26px 22px;
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-shadow: 0 0 0 1px var(--line);
+}
+.about__qmark {
+  position: absolute;
+  top: -16px;
+  left: 20px;
+  color: var(--gold);
+}
+.about__quote p {
+  font-size: 15.5px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--navy-80);
+}
+.about__quote footer {
+  margin-top: 14px;
+}
+.about__quote strong {
+  display: block;
+  font-size: 14.5px;
+  color: var(--navy);
+}
+.about__quote small {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* ---------- CEO ---------- */
+.about__ceo {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #2a2c31;
+  box-shadow: var(--shadow-lg);
+}
+.about__ceo-photo {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.about__ceo-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 12%;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.about__ceo:hover .about__ceo-photo img {
+  transform: scale(1.03);
+}
+.about__ceo-card {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: rgba(254, 254, 252, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+.about__ceo-card strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 19px;
+  line-height: 1.2;
+  color: var(--navy);
+}
+.about__ceo-card small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.about__ceo-script {
+  position: absolute;
+  right: 22px;
+  bottom: 104px;
+  font-size: 25px;
+  line-height: 1;
+  text-align: right;
+  color: var(--surface);
+  text-shadow: 0 2px 12px rgba(15, 27, 45, 0.6);
+  transform: rotate(-6deg);
+}
+.about__ceo-script::after {
+  content: '';
+  display: block;
+  height: 3px;
+  margin: 6px 0 0 30px;
+  border-radius: 3px;
+  background: var(--gold);
+}
+
+/* ---------- school gallery (subtle side column) ---------- */
+.about__school {
+  padding-top: 24px;
+}
+.about__school-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--navy);
+}
+.about__school-label svg {
+  color: var(--blue);
+}
+.about__school-text {
+  margin: 10px 0 18px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.agallery__main {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+.agallery__main img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.agallery__count {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--surface);
+  background: rgba(15, 27, 45, 0.7);
+}
+.agallery__arrow {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0;
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+  background: rgba(254, 254, 252, 0.92);
+  box-shadow: var(--shadow-sm);
+}
+.agallery__arrow--prev {
+  left: 10px;
+}
+.agallery__arrow--next {
+  right: 10px;
+}
+.agallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+.agallery__thumbs button {
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: none;
+  opacity: 0.65;
+  transition: opacity 0.25s, border-color 0.25s;
+}
+.agallery__thumbs button.is-active {
+  opacity: 1;
+  border-color: var(--gold);
+}
+.agallery__thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about__school-script {
+  margin-top: 22px;
+  font-size: 23px;
+  line-height: 1.1;
+  color: var(--muted);
+  transform: rotate(-4deg);
+}
+
+@media (max-width: 1100px) {
+  .about__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .about__copy {
+    grid-column: 1 / -1;
+  }
+  .about__school {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about__school {
+    max-width: 360px;
+  }
+  .about__ceo-script {
+    font-size: 21px;
+    bottom: 96px;
+  }
+}

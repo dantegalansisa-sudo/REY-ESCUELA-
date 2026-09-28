@@ -22,7 +22,7 @@ export default function WhyUs() {
   const y = useTransform(scrollYProgress, [0, 1], reduce ? ['0%', '0%'] : ['-8%', '8%'])
 
   return (
-    <section className="why" id="nosotros" ref={ref}>
+    <section className="why" id="por-que" ref={ref}>
       <motion.div className="why__bg" style={{ y }} aria-hidden="true">
         <img src="/images/porque-elegirnos.webp" alt="" loading="lazy" />
       </motion.div>

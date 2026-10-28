@@ -102,6 +102,17 @@ const graph = {
   ],
 }
 
+const legalGraph = (r) => [
+  { '@type': 'WebPage', name: r.title, url: abs(r.path), inLanguage: 'es-DO', isPartOf: { '@id': abs('/#web') } },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: abs('/') },
+      { '@type': 'ListItem', position: 2, name: r.title.split(' | ')[0], item: abs(r.path) },
+    ],
+  },
+]
+
 /* ---------- HTML per route ---------- */
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
@@ -127,8 +138,8 @@ for (const r of ROUTES) {
     `<meta name="twitter:title" content="${esc(r.title)}" />`,
     `<meta name="twitter:description" content="${esc(r.description)}" />`,
     `<meta name="twitter:image" content="${abs(r.image)}" />`,
-    `<link rel="preload" as="image" href="${r.preload}" fetchpriority="high" />`,
-    `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph[r.path] }).replace(/</g, '\\u003c')}</script>`,
+    r.preload ? `<link rel="preload" as="image" href="${r.preload}" fetchpriority="high" />` : '',
+    `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph[r.path] ?? legalGraph(r) }).replace(/</g, '\\u003c')}</script>`,
   ].join('\n    ')
 
   const html = template
@@ -168,7 +179,7 @@ ${ROUTES.map(
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${r.priority}</priority>
-    <image:image><image:loc>${abs(r.preload)}</image:loc></image:image>${r.path === '/' ? videoTags : ''}
+    ${r.preload ? `<image:image><image:loc>${abs(r.preload)}</image:loc></image:image>` : ''}${r.path === '/' ? videoTags : ''}
   </url>`,
 ).join('\n')}
 </urlset>

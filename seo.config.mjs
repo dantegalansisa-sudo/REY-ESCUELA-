@@ -26,4 +26,22 @@ export const ROUTES = [
     preload: '/images/planes-banner.webp',
     priority: '0.9',
   },
+  {
+    path: '/privacidad',
+    out: ['privacidad.html', 'privacidad/index.html'],
+    title: 'Política de privacidad | REY Escuela de Chofer',
+    description:
+      'Cómo REY Escuela de Chofer en Baní trata tus datos personales, conforme a la Ley 172-13 de protección de datos de la República Dominicana.',
+    image: '/images/og.jpg',
+    priority: '0.3',
+  },
+  {
+    path: '/terminos',
+    out: ['terminos.html', 'terminos/index.html'],
+    title: 'Términos y condiciones | REY Escuela de Chofer',
+    description:
+      'Condiciones de uso del sitio y de los servicios de REY Escuela de Chofer en Baní: planes, pagos, clases, trámite de licencia y más.',
+    image: '/images/og.jpg',
+    priority: '0.3',
+  },
 ]

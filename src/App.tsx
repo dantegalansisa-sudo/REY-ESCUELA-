@@ -5,6 +5,8 @@ import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 import Home from './pages/Home'
 import Planes from './pages/Planes'
+import Legal from './pages/Legal'
+import { PRIVACY, TERMS } from './data/legal'
 
 /** Scroll to top on route change, or to the #section when the URL has a hash. */
 function ScrollManager() {
@@ -30,6 +32,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/planes" element={<Planes />} />
+          <Route path="/privacidad" element={<Legal doc={PRIVACY} kind="privacidad" />} />
+          <Route path="/terminos" element={<Legal doc={TERMS} kind="terminos" />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>

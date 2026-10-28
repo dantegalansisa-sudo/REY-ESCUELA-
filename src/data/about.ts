@@ -10,5 +10,6 @@ export const CEO = {
 }
 
 export const SCHOOL_PHOTOS = [
-  { src: '/images/nosotros-escuela-1.webp', alt: 'Recepción y sala de espera de REY Escuela de Chofer en Baní' },
+  { src: '/images/nosotros-escuela-2.webp', alt: 'Sala de espera y recepción de REY Escuela de Chofer en Baní' },
+  { src: '/images/nosotros-escuela-1.webp', alt: 'Área de recepción con sofá y diplomas en REY Escuela de Chofer' },
 ]

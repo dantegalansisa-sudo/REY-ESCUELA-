@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight, ChevronLeft, ChevronRight, Play, Video, X } from 'lucide-react'
 import { Reveal, RevealText } from '../motion'
@@ -15,7 +15,10 @@ function VideoCard({ v, index, onOpen }: { v: StudentVideo; index: number; onOpe
   const preview = (on: boolean) => {
     const el = ref.current
     if (!el || !canHover) return
-    if (on) el.play().catch(() => {})
+    if (on) {
+      el.muted = true // pre-rendered HTML lacks the attribute; muted is required for hover playback
+      el.play().catch(() => {})
+    }
     else {
       el.pause()
       el.currentTime = 0
@@ -34,7 +37,7 @@ function VideoCard({ v, index, onOpen }: { v: StudentVideo; index: number; onOpe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '0px 0px -8% 0px' }}
       exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.25 } }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: Math.min(index, 4) * 0.08 }}
     >
       <video ref={ref} className="vcard__media" src={v.src} poster={v.poster} muted loop playsInline preload="none" />
       <span className="vcard__shade" aria-hidden="true" />
@@ -87,7 +90,7 @@ function Lightbox({ list, index, onClose, onNav }: { list: StudentVideo[]; index
       exit={{ opacity: 0 }}
     >
       <motion.div
-        className="vbox__stage"
+        className={`vbox__stage ${v.landscape ? 'vbox__stage--wide' : ''}`}
         onClick={(e) => e.stopPropagation()}
         initial={{ scale: 0.94, y: 20 }}
         animate={{ scale: 1, y: 0 }}
@@ -140,6 +143,30 @@ export default function Videos() {
   }, [])
   const list = filter === 'todos' ? VIDEOS : VIDEOS.filter((v) => v.category === filter)
 
+  const track = useRef<HTMLDivElement>(null)
+  const [edge, setEdge] = useState({ start: true, end: false })
+  const update = useCallback(() => {
+    const el = track.current
+    if (!el) return
+    setEdge({ start: el.scrollLeft < 8, end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 8 })
+  }, [])
+  useEffect(() => {
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [update])
+  useEffect(() => {
+    track.current?.scrollTo({ left: 0, behavior: 'smooth' })
+    const t = window.setTimeout(update, 450)
+    return () => window.clearTimeout(t)
+  }, [filter, update])
+  const go = (dir: 1 | -1) => {
+    const el = track.current
+    const card = el?.firstElementChild as HTMLElement | null
+    if (!el || !card) return
+    el.scrollBy({ left: dir * (card.offsetWidth + 22) * (window.innerWidth > 720 ? 2 : 1), behavior: 'smooth' })
+  }
+
   return (
     <section className="section videos" id="videos">
       <div className="container">
@@ -179,9 +206,9 @@ export default function Videos() {
           </motion.p>
         </div>
 
-        {filters.length > 1 && (
-          <Reveal delay={0.1} className="videos__filters" >
-            <div role="tablist" aria-label="Filtrar videos">
+        <Reveal delay={0.1} className="videos__bar">
+          {filters.length > 1 ? (
+            <div className="videos__filters" role="tablist" aria-label="Filtrar videos">
               {(['todos', ...filters] as Filter[]).map((f) => (
                 <button
                   key={f}
@@ -194,10 +221,20 @@ export default function Videos() {
                 </button>
               ))}
             </div>
-          </Reveal>
-        )}
+          ) : (
+            <span />
+          )}
+          <div className="videos__arrows">
+            <button className="tarrow" onClick={() => go(-1)} disabled={edge.start} aria-label="Videos anteriores">
+              <ChevronLeft size={20} />
+            </button>
+            <button className="tarrow" onClick={() => go(1)} disabled={edge.end} aria-label="Más videos">
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </Reveal>
 
-        <motion.div layout className="videos__grid">
+        <div className="videos__track" ref={track} onScroll={update}>
           <AnimatePresence>
             {list.map((v, i) => (
               <VideoCard key={v.src} v={v} index={i} onOpen={() => setOpen(i)} />
@@ -212,7 +249,7 @@ export default function Videos() {
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '0px 0px -8% 0px' }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: list.length * 0.08 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: Math.min(list.length, 4) * 0.08 }}
             >
               <img src="/images/logo.webp" alt="" className="vcta__logo" />
               <strong>Tu historia puede ser la próxima</strong>
@@ -222,7 +259,7 @@ export default function Videos() {
               </span>
             </motion.a>
           </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
 
       <AnimatePresence>

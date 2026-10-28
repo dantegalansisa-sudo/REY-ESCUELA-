@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { ArrowRight, BookOpen, Car, IdCard, Play, Trophy, UserRound } from 'lucide-react'
 import { Magnetic, Reveal, RevealItem, RevealText } from './motion'
@@ -23,6 +23,16 @@ const WA_COMENZAR = waLink('Hola, quiero comenzar mis clases de manejo en REY Es
 export default function Hero() {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
+  const clip = useRef<HTMLVideoElement>(null)
+
+  // Pre-rendered HTML can't carry the `muted` attribute (React sets it as a property),
+  // so browsers block the autoplay; start the silent loop once hydrated.
+  useEffect(() => {
+    const v = clip.current
+    if (!v) return
+    v.muted = true
+    v.play().catch(() => {})
+  }, [reduce])
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const bgY = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '18%'])
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.06, reduce ? 1.06 : 1.14])
@@ -121,7 +131,11 @@ export default function Hero() {
           <Reveal onMount delay={1.15}>
             <a className="hero__exp" href={SITE.instagram} target="_blank" rel="noopener noreferrer">
               <span className="hero__exp-thumb">
-                <img src="/images/porque-elegirnos.webp" alt="" loading="lazy" />
+                {reduce ? (
+                  <img src="/videos/hero-experiencia.jpg" alt="" loading="lazy" />
+                ) : (
+                  <video ref={clip} src="/videos/hero-experiencia.mp4" poster="/videos/hero-experiencia.jpg" autoPlay muted loop playsInline preload="none" aria-hidden="true" />
+                )}
                 <span className="hero__exp-play">
                   <Play size={16} fill="currentColor" strokeWidth={0} />
                 </span>

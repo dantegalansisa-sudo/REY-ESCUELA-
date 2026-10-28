@@ -1,0 +1,13 @@
+{
+  "name": "REY Escuela de Chofer",
+  "short_name": "REY Escuela",
+  "lang": "es-DO",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FAFAF7",
+  "theme_color": "#0F1B2D",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

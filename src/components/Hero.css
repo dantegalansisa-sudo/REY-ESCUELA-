@@ -232,11 +232,12 @@
   border-radius: 14px;
   overflow: hidden;
 }
-.hero__exp-thumb img {
+.hero__exp-thumb img,
+.hero__exp-thumb video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 80% 50%;
+  object-position: 50% 40%;
 }
 .hero__exp-play {
   position: absolute;

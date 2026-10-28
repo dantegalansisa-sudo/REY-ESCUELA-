@@ -16,7 +16,7 @@ const MINI_FAQ = [FAQS[0], FAQS[2], FAQS[3]]
 export default function Planes() {
   useEffect(() => {
     const prev = document.title
-    document.title = 'Planes y precios | REY Escuela de Chofer en Baní'
+    document.title = 'Planes y precios de clases de manejo en Baní | REY Escuela de Chofer'
     return () => {
       document.title = prev
     }

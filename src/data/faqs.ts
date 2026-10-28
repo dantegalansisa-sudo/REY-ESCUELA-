@@ -1,6 +1,4 @@
-import type { ReactNode } from 'react'
-
-export type Faq = { q: string; a: ReactNode }
+export type Faq = { q: string; a: string }
 
 export const FAQS: Faq[] = [
   { q: '¿Cuánto dura cada clase?', a: 'Cada clase dura 35 minutos, tanto las de simulador como las de ruta y parqueo.' },

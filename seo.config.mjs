@@ -3,7 +3,7 @@
  * Al tener el dominio definitivo, cámbialo aquí (o define la variable de entorno SITE_URL en el hosting)
  * y vuelve a ejecutar `npm run build`: canonical, Open Graph, sitemap.xml, robots.txt y JSON-LD se actualizan solos.
  */
-export const SITE_URL = (process.env.SITE_URL || 'https://reyescueladechofer.com').replace(/\/+$/, '')
+export const SITE_URL = (process.env.SITE_URL || 'https://rey-escuela.vercel.app').replace(/\/+$/, '')
 
 export const ROUTES = [
   {

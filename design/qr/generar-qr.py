@@ -10,9 +10,9 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 URL = sys.argv[1] if len(sys.argv) > 1 else 'https://reyescuelademanejo.com'
 LABEL = sys.argv[2] if len(sys.argv) > 2 else 'reyescuelademanejo.com'
-OUT = sys.argv[3] if len(sys.argv) > 3 else HERE
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
+OUT = sys.argv[3] if len(sys.argv) > 3 else HERE
 os.makedirs(OUT, exist_ok=True)
 
 NAVY, BLUE, GOLD, RED = (15, 27, 45), (30, 91, 216), (232, 169, 28), (215, 38, 43)
